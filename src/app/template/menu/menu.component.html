@@ -1,0 +1,50 @@
+<div id='menu-area-responsible' *ngIf='desktop; else mobile'>
+    <img [src]="imageSrc" alt="{{imageAlt}}" style=" width: 145px; margin: 0 auto 50px; display: block" routerLink="/home"/>
+    <h1 class="title-bold">{{titulo}}</h1>
+    <ul id="side-menu-area">
+        <li class="fa-border-all" routerLink="/home">
+            <div class="icon-menu-area">
+                <img class="fa-border-all" src="{{dash}}" />
+            </div>
+            <a>Dashboard</a>
+        </li>
+        <li class="fa-car-side" routerLink="/home">
+            <div class="icon-menu-area">
+                <img class="fa-border-all" src="{{car}}" />
+            </div>
+            <a>Vehicle</a>
+        </li>
+        <li class="chart-icone" routerLink="/home">
+            <div class="icon-menu-area">
+                <svg class="chart-icon" version="1.1" baseProfile="full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="22.5" y1="91" x2="22.5" y2="62" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="42.5" y1="91" x2="42.5" y2="37" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="62.5" y1="91" x2="62.5" y2="46" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="82.5" y1="91" x2="82.5" y2="23" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="5" y1="95" x2="5" y2="5" stroke-width="5" class="chart-scale" /> <line x1="2.5" y1="95" x2="100" y2="95" stroke-width="5" class="chart-scale" /> </svg>
+            </div>
+            <a>Report</a>
+        </li>
+    </ul>
+</div>
+<ng-template #mobile>
+    <div id='menu-area-responsible' >
+        <img [src]="imageSrc" alt="{{imageAlt}}" style=" width: 80px; margin: 0 0 0 10px; display: inline-block" routerLink="/home"/>
+        <ul id="side-menu-area">
+            <li class="fa-border-all" routerLink="/home">
+                <div class="icon-menu-area">
+                    <img class="fa-border-all" src="{{dash}}" />
+                </div>
+                <a>Dashboard</a>
+            </li>
+            <li class="fa-car-side" routerLink="/home">
+                <div class="icon-menu-area">
+                    <img class="fa-border-all" src="{{car}}" />
+                </div>
+                <a>Vehicle</a>
+            </li>
+            <li class="chart-icone" routerLink="/home">
+                <div class="icon-menu-area">
+                    <svg class="chart-icon" version="1.1" baseProfile="full" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="22.5" y1="91" x2="22.5" y2="62" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="42.5" y1="91" x2="42.5" y2="37" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="62.5" y1="91" x2="62.5" y2="46" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="82.5" y1="91" x2="82.5" y2="23" stroke-width="10" stroke-linecap="butt" class="chart-line" /><line x1="5" y1="95" x2="5" y2="5" stroke-width="5" class="chart-scale" /> <line x1="2.5" y1="95" x2="100" y2="95" stroke-width="5" class="chart-scale" /> </svg>
+                </div>
+                <a>Report</a>
+            </li>
+        </ul>
+        <h1 class="title-bold">{{titulo}}</h1>
+    </div>
+</ng-template>

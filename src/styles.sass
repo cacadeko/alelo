@@ -1,0 +1,566 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700)
+@import '~compass-mixins/lib/compass/css3'
+// Fontes
+$open-sans: 'Open Sans'
+$mobile: 420px
+$desktop: 1280px
+
+// Estilos principais
+body 
+    font-family: $open-sans
+    font-weight: normal
+    padding: 0
+    margin: 0
+
+h1, h2, h3, h4, h5, h6
+    font-family: $open-sans
+    font-weight: normal
+
+h1.title-bold
+  @media screen and (max-width: $mobile)
+    font-size: 20px
+    font-weight: bold
+    color: #888888
+    text-align: center
+    margin: 30px 0 0 0
+    
+  @media screen and (min-width: $desktop)
+    font-size: 20px
+    font-weight: bold
+    color: #888888
+
+li
+    list-style: none
+
+label
+  display: block
+  font-size: 14px
+  font-weight: bold
+  color: #555550
+
+p
+    font-family: $open-sans
+    font-weight: normal
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+  
+    @media screen and (min-width: $desktop)
+        font-size: 20px
+
+a
+    font-family: $open-sans
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+  
+    @media screen and (min-width: $desktop)
+        font-size: 14px
+
+table
+  display: inline-table
+  width: 100%
+
+th
+    font-family: $open-sans
+    text-align: center
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+        background: #43A4E6
+        color: #fff
+  
+    @media screen and (min-width: $desktop)
+        font-size: 14px
+        background: #43A4E6
+        color: #fff
+
+td
+    font-family: $open-sans
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+        color: #555550
+        padding: 5px 0
+  
+    @media screen and (min-width: $desktop)
+        font-size: 14px
+        color: #555550
+        padding: 5px 0
+
+
+.th-plate
+    text-align: center
+    @media screen and (max-width: $mobile)
+      border-radius: 10px 0 0 0
+      width: 25%
+  
+    @media screen and (min-width: $desktop)
+      border-radius: 10px 0 0 0
+      width: 25%
+
+.th-actions
+    @media screen and (max-width: $mobile)
+      border-radius: 0 10px 0 0
+      padding: 5px
+
+  
+    @media screen and (min-width: $desktop)
+      border-radius: 0 10px 0 0
+      padding: 5px
+
+        
+tr:nth-child(odd)
+    font-family: $open-sans
+    border-style: none
+    text-align: center
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+        background: #ddd
+  
+    @media screen and (min-width: $desktop)
+        font-size: 14px
+        background: #ddd
+        
+tr:nth-child(even)
+    font-family: $open-sans
+    border-style: none
+    text-align: center
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+        background: #F7F7F7
+  
+    @media screen and (min-width: $desktop)
+        font-size: 14px
+        background: #F7F7F7
+
+
+@mixin button-bg($bg)
+  background: $bg
+  &:hover 
+    background:darken($bg,8%)
+    transition: all 0.3s ease
+  
+  &:active
+    background:darken($bg,25%)
+
+
+.btn
+    font-family: $open-sans
+    font-weight: bold
+
+    @media screen and (max-width: $mobile)
+        font-size: 14px
+  
+    @media screen and (min-width: $desktop)
+        font-size: 20px
+
+.icon-menu-area  
+  width: 34px
+  display: inline-block
+  padding: 5px 0 0 0
+
+#global-area
+    @media screen and (max-width: $mobile)
+        width: 100%
+        margin: 36px auto
+        display: block
+  
+    @media screen and (min-width: $desktop)
+        width: 1280px
+        margin: 36px auto
+        display: block 
+
+#menu-area
+    padding: 0
+
+    @media screen and (max-width: $mobile)
+      width: 100%
+      margin: 36px auto
+      display: block
+
+    @media screen and (min-width: $desktop)
+      width: 20%
+      margin: 36px auto
+      display: inline-flex
+
+#side-menu-area li a
+  @media screen and (max-width: $mobile)
+    display: inline-block
+    padding: 0
+    margin: 0
+    color: #555550
+    font-weight: bold
+  
+  @media screen and (min-width: $desktop)
+    display: inline-block
+    cursor: pointer
+    padding: 0
+    margin: 0
+    color: #555550
+    font-weight: bold
+
+.btn-sucess
+    @include button-bg(#BDD654)
+
+.btn-error
+    @include button-bg(#BC2F6C)
+
+.btn-info
+    @include button-bg(#43A4E6)
+
+.btn-warning
+    @include button-bg(#FACC05)
+
+
+.fa-car-side img
+  width: 20px
+  height: auto
+  transition: margin-left .5s
+  color: #555550 !important
+
+.fa-border-all img
+  width: 18px
+  height: auto
+  transition: margin-left .5s
+  color: #555550 !important
+
+#menu-area ul li
+  @media screen and (max-width: $mobile)
+    display: block
+    padding: 0px 10px
+    margin: 0
+    background: none
+    cursor: pointer
+    transition: all 0.3s ease
+
+  @media screen and (min-width: $desktop)
+    display: block
+    padding: 10px 10px
+    margin: 0
+    background: none
+    cursor: pointer
+    transition: all 0.3s ease
+
+#menu-area ul li:hover
+  display: block
+  padding: 10px 10px
+  margin: 0
+  background: #DDDDDD
+  border-radius: 7px
+  transition: all 0.3s ease
+
+ul#side-menu-area
+  @media screen and (max-width: $mobile)
+    margin: 0
+    padding: 0
+    position: absolute
+    top: 0px
+    right: 0
+    width: 40%
+
+  @media screen and (min-width: $desktop)
+    margin: 0
+    padding: 0
+
+li.fa-car-side:hover img, li.fa-border-all:hover img
+    margin-left: 12px
+
+$animation-duration: 2.4s
+$animation-effect: cubic-bezier(.49,.86,.59,.95)
+
+// https://coolors.co/app/173753-427aa1-fbf6fa-82204a-7399b8
+$scale-color: #282828
+$line-color: #282828
+$background-color: #FBF6FA
+$headline-color: #282828
+
+$svg-size: 20px
+
+.chart-icon-wrapper
+  background-color: $background-color
+  border-radius: 4px
+  font-family: $open-sans
+  font-size: 36px
+  margin: 0 auto
+  padding: .5em
+  text-align: center
+  width: 27em
+  h3
+    color: $headline-color
+
+.chart-icon
+  width: $svg-size
+
+.chart-scale
+  stroke: $scale-color
+
+.chart-line
+  stroke: $line-color
+  transform-origin: bottom
+
+.chart-icon, li.chart-icone
+  &:hover,
+  &:focus,
+  &:active
+    .chart-line
+      &:first-child
+        animation: $animation-duration $animation-effect infinite chartlines
+      &:nth-child(2)
+        animation: $animation-duration*.8 $animation-effect infinite reverse chartlines
+      &:nth-child(3)
+        animation: $animation-duration*1.1 $animation-effect infinite reverse chartlines
+      &:nth-child(4)
+        animation: $animation-duration*.9 $animation-effect infinite chartlines
+
+@keyframes chartlines
+  0%
+    transform: scaleY(1)
+  32%
+    transform: scaleY(1.15)
+  79%
+    transform: scaleY(.9)
+  100%
+    transform: scaleY(1)
+
+
+#content-area
+  @media screen and (max-width: $mobile)
+    width: 99%
+    display: block
+    padding: 0
+    margin: 0 auto
+
+  
+  @media screen and (min-width: $desktop)
+    width: 80%
+    display: inline-table
+    padding: 0
+    margin: 0
+
+#btn-pag-area
+  display: block
+  width: auto
+  position: absolute
+  right: 35px
+  margin: 5px 0 0 0
+
+
+.btn-pag
+  display: inline-flex
+  width: auto
+  padding: 3px 10px
+  font-size: 14px
+  text-align: center
+  border: 1px solid #aaa
+  border-radius: 2px
+  background: #f6f6f6
+  cursor: pointer
+  transition: all 0.5s ease
+
+.btn-arrow
+  display: inline-flex
+  padding: 5.5px 10px 7px
+  text-align: center
+  border: 1px solid #aaa
+  border-radius: 2px
+  background: #f6f6f6
+  cursor: pointer
+  transition: all 0.5s ease
+  width: 11px
+  height: auto
+
+#search
+  float: left
+
+#add-vehicle-btn
+  float: right
+  
+.alelo-error-btn
+  background: #BC2F6C
+  color: #fff
+  border: none
+  padding: 9px 20px
+  border-radius: 4px
+  cursor: pointer
+  transition: all 0.5s ease
+
+.alelo-error-btn:hover
+  background: #9c2357
+  transition: all 0.5s ease
+
+.alelo-default-btn
+  background: #EDEDED
+  color: #000
+  border: none
+  margin: 0 25px 0 0
+  padding: 9px 20px
+  border-radius: 4px
+  cursor: pointer
+  transition: all 0.5s ease
+
+.alelo-default-btn:hover
+  background: #A3A3A3
+  transition: all 0.5s ease
+
+img.alelo-car-img
+  position: absolute
+  top: 22px
+  right: 59px
+
+#area-cadastrar h1
+  font-size: 19px
+  font-weight: bold
+  color: #666
+  margin: 15px 0 40px 0
+  
+#plate-search
+  border: none
+  border-bottom: 1px solid #aaa
+  padding: 10px 10px 4px 10px
+  margin: 0 0 10px 3px
+  width: 239px
+
+.btn-search
+  display: inline-flex
+  padding: 5px 10px 7px
+  text-align: center
+  border: none
+  cursor: pointer
+  width: 20px
+  height: auto
+
+.btn-pag.ativo, .btn-pag:hover
+  background: #bbb
+  transition: all 0.5s ease
+
+.status-true
+  width: 10px
+  height: 10px
+  display: inline-block
+  background: #0E7F61
+  margin: 0 auto
+  padding: 0
+  border-radius: 80px
+
+.status-false
+  width: 10px
+  height: 10px
+  display: inline-block
+  background: #BC2F6C
+  margin: 0 auto
+  padding: 0
+  border-radius: 80px
+
+.status-text
+  display: inline-block
+  font-size: 14px
+  padding: 0 6px
+
+.hidden
+  display: none !important
+
+#modal-deletar
+  position: absolute
+  background: rgba(0, 0, 0, 0.5)
+  width: 1025px
+  height: 1000px
+
+#modal-cadastrar
+  position: absolute
+  background: white
+  width: 1030px
+  height: 674px
+  box-shadow: 0px 9px 16px -4px #000
+  border-radius: 7px
+  z-index: 10
+
+#area-cadastrar   
+  display: block
+  width: 60%
+  height: auto
+  padding: 25px
+
+#deletar-confirm
+  width: 258px
+  height: 102px
+  margin: 20% auto
+  padding: 20px
+  background: #fff
+  border-radius: 5px
+
+#deletar-confirm h3  
+  margin: 0
+  padding: 0
+  font-weight: bold
+  font-size: 16px
+  color: #888888
+
+#deletar-confirm p
+  margin: 0
+  padding: 16px 0
+  font-size: 13px
+  color: #555550
+
+#deletar-decisao
+  width: 155px
+  margin: 0 auto
+  display: block
+
+.confirm-del
+  position: relative
+  right: -37px
+  color: #BC2F6C
+  cursor: pointer
+
+#buttons-area
+  position: absolute
+  margin: 40px 0 0 0
+
+#area-cadastrar .input-field
+  border: none
+  border-bottom: 1px solid #ddd
+  width: 320px
+  padding: 10px
+  font-size: 12px
+  margin: 0 0 15px 0
+
+
+
+// Botões
+// - `#BDD654` - Success
+// - `#BC2F6C` - Error
+// - `#43A4E6` - Info
+// - `#FACC05` - Warning
+
+
+    
+// ###### Neutras (do mais escuro pro mais claro)
+
+// - `#000000`
+// - `#282828`
+// - `#555550`
+// - `#888888`
+// - `#A3A3A3`
+// - `#C0C0C0`
+// - `#DDDDDD`
+// - `#EDEDED`
+// - `#F7F7F7`
+// - `#FFFFFF`
+
+
+// - `rgb(156, 35, 87)` - magenta
+// - `#282828` - preto
+// - `#BDD654` - verde claro
+// - `#0E7F61` - verde escuro
+
+
+//   ###### Suporte    ///// OK
+
+// - `#BDD654` - Success
+// - `#BC2F6C` - Error
+// - `#43A4E6` - Info
+// - `#FACC05` - Warning

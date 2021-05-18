@@ -1,0 +1,200 @@
+<div id="global-area">
+    <div id="menu-area">
+        <app-menu></app-menu>
+    </div>
+    <div id="content-area">
+        <!-- ## Início da visualização desktop -->
+        <ng-container *ngIf='desktop; else mobile'>
+            <!-- ## Início do modal deletar -->
+            <div id="modal-deletar" class="hidden">
+                <div id="deletar-confirm">
+                    <h3>Delete</h3>
+                    <p>Do you wanto to delete this vehicle?</p>
+                    <div id="deletar-decisao">
+                        <a (click)="delCancel()" class="cancel-del">I don't</a>
+                        <a (click)="delCarro(deleteId)" class="confirm-del">Confirm</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do modal deletar -->
+
+            <!-- ## Início do cadastro e edição de carros -->
+            <div id="modal-cadastrar" class="hidden">
+                <div id="area-cadastrar">
+                    <form  [formGroup]="form">
+                        <h1>New Vehicle</h1>
+                        <img class="alelo-car-img" src="{{car}}" />
+                        <label for="plate-vehicle">Plate</label>
+                        <input id="plate-vehicle" class="input-field" type="text" placeholder="Type a plate" [(ngModel)]="novocarro.plate">
+                        
+                        <label for="model-vehicle">Model</label>
+                        <input id="model-vehicle" class="input-field" type="text" placeholder="Type a model" [(ngModel)]="novocarro.model">
+                        
+                        <label for="manufacturer-vehicle">Manufacturer</label>
+                        <input id="manufacturer-vehicle" class="input-field" type="text" placeholder="Type the manufaturer" [(ngModel)]="novocarro.manufacturer">
+                        
+                        <label for="color-vehicle">Color</label>
+                        <input id="color-vehicle" class="input-field" type="text" placeholder="Type the color" [(ngModel)]="novocarro.color">
+                        
+                        <label for="status-vehicle">Status</label>
+                        <input id="status" type="radio" [value]="true" formControlName="status" checked="checked" [(ngModel)]="novocarro.status">Active
+                        <input id="status" type="radio" [value]="false" formControlName="status">Inactive
+    
+                        <div id="buttons-area">
+                            <button id="add-vehicle-btn" class="alelo-error-btn" (click)="novoCarro()">Save</button>
+                            <button id="add-vehicle-btn" class="alelo-default-btn" (click)="exibeModalCadastro()">Reset All</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Fim do cadastro e edição de carros -->
+
+            <!-- ## Início do grid -->
+            <div id="tools">
+                <div id="search">
+                    <input placeholder="plate search" id="plate-search" type="text"/>
+                    <div (click)="searchPlate()" class="btn-search"><img class="fa-border-all" src="{{lupa}}" /></div>
+                </div>
+                <button id="add-vehicle-btn" class="alelo-error-btn" (click)="exibeModalCadastro()">Add Vehicle +</button>
+            </div>
+            <table class="table-round-corner" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                      <th class="th-plate">Plate</th>
+                      <th class="th-model">Model</th>
+                      <th class="th-manufacturer">Manufacturer</th>
+                      <th class="th-status">Status</th>
+                      <th class="th-actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let page of carros">
+                        <tr>
+                            <td  class="td-plate">{{page.plate}}</td>
+                            <td  class="td-model">{{page.model}}</td>
+                            <td  class="td-manufacturer">{{page.manufacturer}}</td>
+                            <td  class="td-status"><p class="status-{{page.status}}"></p>
+                                <ng-container *ngIf="page.status; else statusfalse ">
+                                    <p class='status-text'>Active</p>
+                                </ng-container>
+                                <ng-template #statusfalse>
+                                    <p class='status-text'>Inactive</p>
+                                </ng-template>
+                            </td>
+                            <td  class="td-actions">
+                                <div (click)="editarCarro(page.id)" class="btn-search"><img class="fa-border-all" src="{{edit}}" alt="Alelo Editar Carro" title="Editar"/></div>
+                                <div (click)="deletarCarro(page.id)" class="btn-search btn-trash"><img class="fa-border-all" src="{{trash}}" alt="Alelo Deletar Carro" title="Apagar"/></div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <div id="btn-pag-area">
+                <div (click)="inicioPag()" class="btn-arrow"><img class="fa-border-all" src="{{arrowLeft}}" /></div>
+                <ng-container *ngFor="let page of pageList">
+                    <div id="btn-pag{{page}}" class="btn-pag inativo" (click)="numPaginacao(page)">{{page}}</div>
+                </ng-container>
+                <div (click)="fimPag()" class="btn-arrow"><img class="fa-border-all" src="{{arrowRight}}" /></div>
+            </div>
+            <!-- Fim do grid -->
+        </ng-container>
+        <!-- Fim da visualização desktop -->
+        <!-- Início da visualização mobile -->
+        <ng-template #mobile>
+            <div id="modal-deletar" class="hidden">
+                <div id="deletar-confirm">
+                    <h3>Delete</h3>
+                    <p>Do you wanto to delete this vehicle?</p>
+                    <div id="deletar-decisao">
+                        <a (click)="delCancel()" class="cancel-del">I don't</a>
+                        <a (click)="delCarro(deleteId)" class="confirm-del">Confirm</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do modal deletar -->
+
+            <!-- ## Início do cadastro e edição de carros -->
+            <div id="modal-cadastrar" class="hidden">
+                <div id="area-cadastrar">
+                    <form  [formGroup]="form">
+                        <h1>New Vehicle</h1>
+                        <img class="alelo-car-img" src="{{car}}" />
+                        <label for="plate-vehicle">Plate</label>
+                        <input id="plate-vehicle" class="input-field" type="text" placeholder="Type a plate" [(ngModel)]="novocarro.plate">
+                        
+                        <label for="model-vehicle">Model</label>
+                        <input id="model-vehicle" class="input-field" type="text" placeholder="Type a model" [(ngModel)]="novocarro.model">
+                        
+                        <label for="manufacturer-vehicle">Manufacturer</label>
+                        <input id="manufacturer-vehicle" class="input-field" type="text" placeholder="Type the manufaturer" [(ngModel)]="novocarro.manufacturer">
+                        
+                        <label for="color-vehicle">Color</label>
+                        <input id="color-vehicle" class="input-field" type="text" placeholder="Type the color" [(ngModel)]="novocarro.color">
+                        
+                        <label for="status-vehicle">Status</label>
+                        <input id="status" type="radio" [value]="true" formControlName="status" checked="checked" [(ngModel)]="novocarro.status">Active
+                        <input id="status" type="radio" [value]="false" formControlName="status">Inactive
+    
+                        <div id="buttons-area">
+                            <button id="add-vehicle-btn" class="alelo-error-btn" (click)="novoCarro()">Save</button>
+                            <button id="add-vehicle-btn" class="alelo-default-btn" (click)="exibeModalCadastro()">Reset All</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Fim do cadastro e edição de carros -->
+
+            <!-- ## Início do grid -->
+            <div id="tools">
+                <div id="search">
+                    <input placeholder="plate search" id="plate-search" type="text"/>
+                    <div (click)="searchPlate()" class="btn-search"><img class="fa-border-all" src="{{lupa}}" /></div>
+                </div>
+                <button id="add-vehicle-btn" class="alelo-error-btn" (click)="exibeModalCadastro()">Add Vehicle +</button>
+            </div>
+            <table class="table-round-corner" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                      <th class="th-plate">Plate</th>
+                      <th class="th-model">Model</th>
+                      <th class="th-manufacturer">Manufacturer</th>
+                      <th class="th-status">Status</th>
+                      <th class="th-actions">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let page of carros">
+                        <tr>
+                            <td  class="td-plate">{{page.plate}}</td>
+                            <td  class="td-model">{{page.model}}</td>
+                            <td  class="td-manufacturer">{{page.manufacturer}}</td>
+                            <td  class="td-status"><p class="status-{{page.status}}"></p>
+                                <ng-container *ngIf="page.status; else statusfalse ">
+                                    <p class='status-text'>Active</p>
+                                </ng-container>
+                                <ng-template #statusfalse>
+                                    <p class='status-text'>Inactive</p>
+                                </ng-template>
+                            </td>
+                            <td  class="td-actions">
+                                <div (click)="editarCarro(page.id)" class="btn-search"><img class="fa-border-all" src="{{edit}}" alt="Alelo Editar Carro" title="Editar"/></div>
+                                <div (click)="deletarCarro(page.id)" class="btn-search btn-trash"><img class="fa-border-all" src="{{trash}}" alt="Alelo Deletar Carro" title="Apagar"/></div>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+            <div id="btn-pag-area">
+                <div (click)="inicioPag()" class="btn-arrow"><img class="fa-border-all" src="{{arrowLeft}}" /></div>
+                <ng-container *ngFor="let page of pageList">
+                    <div id="btn-pag{{page}}" class="btn-pag inativo" (click)="numPaginacao(page)">{{page}}</div>
+                </ng-container>
+                <div (click)="fimPag()" class="btn-arrow"><img class="fa-border-all" src="{{arrowRight}}" /></div>
+            </div>
+            <!-- Fim do grid -->
+        </ng-template>
+        <!-- Fim da visualização mobile -->
+    </div>
+</div>
+
+
